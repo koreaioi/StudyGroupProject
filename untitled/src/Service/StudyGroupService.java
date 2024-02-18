@@ -29,6 +29,14 @@ public class StudyGroupService {
         return studyGroupRepository.findByName(name);
     }
 
+    public int findOneToIndex(String id) {
+        return studyGroupRepository.findOneToIndex(id);
+    }
+
+    public StudyGroup Update(int index, StudyGroup studyGroup) {
+        return studyGroupRepository.Update(index, studyGroup);
+    }
+
     public void delete(String id) {
         studyGroupRepository.delete(id);
     }

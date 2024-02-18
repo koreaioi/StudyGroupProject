@@ -102,6 +102,55 @@ public class StudyGroupController {
         }
     }
 
+    public void modfiy() {
+        /*
+        * 수정하고자 하는 스터디 그룹의 Id를 입력 받고 해당 Id가 있는지 확인. (findOneToIndex)
+        * 다시 스터디 그룹 내용 초기화
+        *
+        * */
+        int index = findOneToIndex();
+        if(index == -1){
+            System.out.println("수정을 취소합니다.");
+            return;
+        }
+
+        while (true) {
+            String name = inputUtil.getValue("수정할 스터디 이름: (0. 돌아가기) ");
+            if(!validateName(name)){
+                if(name.equals("0")) return;
+                System.out.println("스터디 이름은 두 글자 이상입니다.");
+                continue;
+            }
+
+            String topic = inputUtil.getValue("수정할 스터디 주제: (0. 돌아가기) ");
+            if(topic.equals("0")) return;
+
+            String room = inputUtil.getValue("수정할 스터디 룸: (0. 돌아가기) ");
+            if(room.equals("0")) return;
+
+            String period = inputUtil.getValue("수정할 스터디 기간: (0. 돌아가기) ");
+            if(period.equals("0")) return;
+
+            String save = inputUtil.getValue("수정하시겠습니까? (9. 등록, 0. 돌아가기)");
+
+            if (save.equals("9")) {
+                StudyGroup newGroup = new StudyGroup(name, topic, room, period);
+
+                studyGroupService.Update(index, newGroup);
+
+                System.out.println("===========================================");
+                System.out.println(">>스터디그룹 수정: " + newGroup.toString());
+                System.out.println("===========================================");
+                return;
+            }else{
+                System.out.println("스터디 수정이 취소됐습니다.");
+                return;
+            }
+        }
+
+
+    }
+
     public void delete() {
         /*
         * 삭제할 Id를 입력받는다.
@@ -145,5 +194,17 @@ public class StudyGroupController {
         return findGroup;
     }
 
+    public int findOneToIndex() {
+        int index = -1;
 
+        while (true) {
+            String findId = inputUtil.getValue("수정할 Id를 입력하세요: (0. 돌아가기)");
+            if(findId.equals("0")) return index;
+
+            index = studyGroupService.findOneToIndex(findId);
+
+            if (index != -1) return index;
+            else System.out.println("해당 Id로 조회되는 스터디 그룹이 없습니다.");
+        }
+    }
 }

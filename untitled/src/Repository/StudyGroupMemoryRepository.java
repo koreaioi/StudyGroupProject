@@ -23,6 +23,10 @@ public class StudyGroupMemoryRepository implements StudyGroupRepository {
     public List<StudyGroup> findAll() {
         return studyGroups;
     }
+
+
+
+
     @Override
     public StudyGroup findById(String id) {
         StudyGroup findGroup = null;
@@ -44,6 +48,24 @@ public class StudyGroupMemoryRepository implements StudyGroupRepository {
             }
         }
         return studylist;
+    }
+
+    @Override
+    public StudyGroup Update(int index, StudyGroup studyGroup) {
+        studyGroups.remove(index);
+        studyGroups.add(index, studyGroup);
+        return studyGroup;
+    }
+
+    @Override
+    public int findOneToIndex(String id) {
+        for (StudyGroup group : studyGroups) {
+            if (group.getId().equals(id)) {
+                return studyGroups.indexOf(group);
+            }
+        }
+
+        return -1;
     }
 
     @Override

@@ -14,6 +14,10 @@ public interface StudyGroupRepository {
 
     List<StudyGroup> findAll();
 
+    int findOneToIndex(String id);
+
+    StudyGroup Update(int index, StudyGroup studyGroup);
+
     void delete(String id);
 
 }

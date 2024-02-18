@@ -37,6 +37,8 @@ public class StudyGroupMenu {
                     studyGroupController.findByName();
                     break;
                 case 5:
+                    studyGroupController.modfiy();
+                    break;
                 case 6:
                     studyGroupController.delete();
                     break;
