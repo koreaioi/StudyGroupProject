@@ -46,4 +46,14 @@ public class StudyGroupMemoryRepository implements StudyGroupRepository {
         return studylist;
     }
 
+    @Override
+    public void delete(String id) {
+        for (StudyGroup group : studyGroups) {
+            if (group.getId().equals(id)) {
+                studyGroups.remove(group);
+                break;
+            }
+        }
+    }
+
 }

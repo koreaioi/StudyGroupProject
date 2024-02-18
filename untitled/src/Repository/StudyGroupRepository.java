@@ -14,4 +14,6 @@ public interface StudyGroupRepository {
 
     List<StudyGroup> findAll();
 
+    void delete(String id);
+
 }

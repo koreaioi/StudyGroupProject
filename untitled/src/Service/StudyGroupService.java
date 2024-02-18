@@ -29,4 +29,8 @@ public class StudyGroupService {
         return studyGroupRepository.findByName(name);
     }
 
+    public void delete(String id) {
+        studyGroupRepository.delete(id);
+    }
+
 }

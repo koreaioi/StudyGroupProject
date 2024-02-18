@@ -5,6 +5,7 @@ import Service.StudyGroupService;
 import Util.InputUtil;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class StudyGroupController {
@@ -101,9 +102,47 @@ public class StudyGroupController {
         }
     }
 
+    public void delete() {
+        /*
+        * 삭제할 Id를 입력받는다.
+        * 해당 Id가 있는지 확인한다. (findByOne)
+        * 있으면 Service.delete(Id)로 삭제
+        * 없으면 해당 Id인 스터디 그룹이 없다고 알리고 다시 입력
+        * */
+        StudyGroup findgroup = findByOne();
+        if(findgroup == null) {
+            System.out.println("스터디 그룹 삭제가 취소됩니다.");
+            return;
+        }
+
+        String confirm = inputUtil.getValue("스터디 그룹을 삭제하겠습니까? (y/n)");
+
+        if(confirm.equalsIgnoreCase("y")){
+            System.out.println("[" + findgroup.getId() + "] 스터디 그룹이 삭제됩니다." );
+            studyGroupService.delete(findgroup.getId());
+        }else{
+            System.out.println("스터디 그룹 삭제가 취소 됩니다.");
+        }
+    }
 
     public boolean validateName(String name) {
         return name.length() > 2;
+    }
+
+    public StudyGroup findByOne() {
+        //findById의 반환 타입이 StudyGroup이고 String으로 하면 findgroup이 null일 경우 처리하기 까다로움
+        StudyGroup findGroup = null;
+
+        while (true) {
+            String findId = inputUtil.getValue("삭제할 Id를 입력하세요: (0. 돌아가기)");
+            if(findId.equals("0")) return findGroup;
+
+            findGroup = studyGroupService.findById(findId);
+
+            if (findGroup != null) break;
+            else System.out.println("해당 Id로 조회되는 스터디 그룹이 없습니다." + findId);
+        }
+        return findGroup;
     }
 
 

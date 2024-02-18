@@ -36,6 +36,10 @@ public class StudyGroupMenu {
                 case 4:
                     studyGroupController.findByName();
                     break;
+                case 5:
+                case 6:
+                    studyGroupController.delete();
+                    break;
                 case 0:
                     System.out.println("작업을 종료합니다.");
                     return;
