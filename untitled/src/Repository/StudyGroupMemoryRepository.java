@@ -20,6 +20,10 @@ public class StudyGroupMemoryRepository implements StudyGroupRepository {
     }
 
     @Override
+    public List<StudyGroup> findAll() {
+        return studyGroups;
+    }
+    @Override
     public StudyGroup findById(String id) {
         StudyGroup findGroup = null;
         for (StudyGroup group : studyGroups) {

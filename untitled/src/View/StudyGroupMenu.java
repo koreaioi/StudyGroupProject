@@ -28,6 +28,7 @@ public class StudyGroupMenu {
                     studyGroupController.register();
                     break;
                 case 2:
+                    studyGroupController.findAll();
                     break;
                 case 3:
                     studyGroupController.findById();

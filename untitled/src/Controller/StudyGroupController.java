@@ -55,6 +55,16 @@ public class StudyGroupController {
 
     }
 
+    public void findAll() {
+        List<StudyGroup> groups = studyGroupService.findAll();
+        if(!groups.isEmpty()){
+            System.out.println("총 " +groups.size() +"건의 스터디 그룹이 조회됩니다.");
+            for (StudyGroup group : groups) System.out.println(group.toString());
+        }else{
+            System.out.println("등록된 스터디 그룹이 없습니다.");
+        }
+    }
+
     public void findById() {
         StudyGroup findGroup;
 
@@ -89,8 +99,8 @@ public class StudyGroupController {
                 return;
             }
         }
-
     }
+
 
     public boolean validateName(String name) {
         return name.length() > 2;

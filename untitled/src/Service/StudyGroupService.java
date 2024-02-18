@@ -17,6 +17,10 @@ public class StudyGroupService {
         return studyGroupRepository.save(studyGroup).getId();
     }
 
+    public List<StudyGroup> findAll() {
+        return studyGroupRepository.findAll();
+    }
+
     public StudyGroup findById(String id) {
         return studyGroupRepository.findById(id);
     }

@@ -12,4 +12,6 @@ public interface StudyGroupRepository {
 
     List<StudyGroup> findByName(String name);
 
+    List<StudyGroup> findAll();
+
 }
