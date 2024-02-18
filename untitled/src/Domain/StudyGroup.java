@@ -21,7 +21,7 @@ public class StudyGroup {
 
     public StudyGroup(String name, String topic, String room, String period) {
         this(); //고유 id
-        setName(name);
+        this.name = name;
         this.topic = topic;
         this.room = room;
         this.period = period;
@@ -31,14 +31,6 @@ public class StudyGroup {
     public String setFoundation(String format) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
         return simpleDateFormat.format(Calendar.getInstance().getTime());
-    }
-
-    public void setName(String name) {
-        if(name.length() < MIN_NAME_LENGTH){
-            System.out.println("스터디 그룹 명은 2자리 이상입니다.");
-            return;
-        }
-        this.name = name;
     }
 
     public String getId() {

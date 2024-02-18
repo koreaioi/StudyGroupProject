@@ -27,6 +27,17 @@ public class StudyGroupMenu {
                 case 1:
                     studyGroupController.register();
                     break;
+                case 2:
+                    break;
+                case 3:
+                    studyGroupController.findById();
+                    break;
+                case 4:
+                    studyGroupController.findByName();
+                    break;
+                case 0:
+                    System.out.println("작업을 종료합니다.");
+                    return;
             }
         }
 

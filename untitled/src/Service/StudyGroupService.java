@@ -4,6 +4,8 @@ import Domain.StudyGroup;
 import Repository.StudyGroupMemoryRepository;
 import Repository.StudyGroupRepository;
 
+import java.util.*;
+
 public class StudyGroupService {
     StudyGroupRepository studyGroupRepository;
 
@@ -12,9 +14,15 @@ public class StudyGroupService {
     }
 
     public String register(StudyGroup studyGroup) {
+        return studyGroupRepository.save(studyGroup).getId();
+    }
 
-        studyGroupRepository.save(studyGroup);
-        return studyGroup.getId();
+    public StudyGroup findById(String id) {
+        return studyGroupRepository.findById(id);
+    }
+
+    public List<StudyGroup> findByName(String name) {
+        return studyGroupRepository.findByName(name);
     }
 
 }

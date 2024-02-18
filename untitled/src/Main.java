@@ -8,8 +8,6 @@ public class Main {
 
       StudyGroupMenu menu = new StudyGroupMenu();
         menu.showMenu();
-
-
-
+        
         }
 }
